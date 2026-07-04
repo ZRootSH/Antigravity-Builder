@@ -1,71 +1,71 @@
-# Guía de Contribución — Antigravity Linux Community
+# Contributing Guide — Antigravity Linux Community
 
-¡Gracias por tu interés en contribuir al repositorio oficial RPM y portal web de **Antigravity IDE**! Somos una iniciativa impulsada por la comunidad y valoramos enormemente cualquier mejora, reporte de errores o sugerencia.
-
----
-
-## 🛠️ Entorno de Desarrollo Local
-
-Este proyecto consta de dos componentes principales:
-1. **El Portal Web (Frontend)**: Construido con [Astro](https://astro.build/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/) y TypeScript.
-2. **El Pipeline de Empaquetado (Backend/DevOps)**: Orquestado con Docker, Bash (`build-repo.sh`), FPM y `createrepo_c`.
-
-### Prerrequisitos
-- [Node.js](https://nodejs.org/) (v20 o superior)
-- [pnpm](https://pnpm.io/) (Gestor de paquetes recomendado: `npm install -g pnpm`)
-- [Docker](https://www.docker.com/) y Docker Compose (para probar el empaquetado RPM)
+Thank you for your interest in contributing to the official RPM repository and web portal for **Antigravity IDE**! We are a community-driven initiative and deeply value any improvements, bug reports, or feature suggestions.
 
 ---
 
-## 🚀 Cómo Empezar con el Portal Web
+## 🛠️ Local Development Environment
 
-1. **Bifurca (Fork) y Clona el repositorio**:
+This project consists of two main components:
+1. **Web Portal (Frontend)**: Built with [Astro](https://astro.build/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), and strict TypeScript.
+2. **RPM Packaging Pipeline (Backend/DevOps)**: Orchestrated with Docker, Bash (`build-repo.sh`), FPM, and `createrepo_c`.
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v20 or higher)
+- [pnpm](https://pnpm.io/) (Recommended package manager: `npm install -g pnpm`)
+- [Docker](https://www.docker.com/) and Docker Compose (to test RPM generation)
+
+---
+
+## 🚀 Getting Started with the Web Portal
+
+1. **Fork and Clone the repository**:
    ```bash
-   git clone https://github.com/tu-usuario/antigravity-rpm-repo.git
+   git clone https://github.com/your-username/antigravity-rpm-repo.git
    cd antigravity-rpm-repo
    ```
 
-2. **Instala las dependencias con `pnpm`**:
+2. **Install dependencies using `pnpm`**:
    ```bash
    pnpm install
    ```
 
-3. **Inicia el servidor de desarrollo**:
+3. **Start the development server**:
    ```bash
    pnpm run dev
    ```
-   El sitio estará disponible localmente en `http://localhost:4321`.
+   The site will be available locally at `http://localhost:4321`.
 
 ---
 
-## 📦 Cómo Probar el Pipeline de Empaquetado RPM (`build-repo.sh`)
+## 📦 Testing the RPM Packaging Pipeline (`build-repo.sh`)
 
-Si deseas mejorar el script de empaquetado `build-repo.sh` o el `Dockerfile.repo`:
+If you want to improve the packaging script `build-repo.sh` or `Dockerfile.repo`:
 
-1. Asegúrate de tener Docker corriendo en tu sistema.
-2. Ejecuta el constructor del repositorio en un entorno aislado:
+1. Ensure Docker is running on your machine.
+2. Run the repository builder inside an isolated container:
    ```bash
    docker compose run --rm repo-builder
    ```
-3. Verifica que el paquete `.rpm` y los metadatos `repomd.xml` se hayan generado correctamente dentro de la carpeta local `./repo/`.
+3. Verify that the `.rpm` package and `repomd.xml` metadata are generated correctly inside the local `./repo/` directory or Docker volume.
 
 ---
 
-## 📬 Proceso para Enviar Pull Requests (PR)
+## 📬 Pull Request (PR) Process
 
-1. Crea una rama para tu función o corrección:
+1. Create a branch for your feature or bugfix:
    ```bash
-   git checkout -b feature/mejora-estilos-footer
+   git checkout -b feature/footer-styling-improvements
    ```
-2. Realiza tus cambios asegurándote de mantener el tipado estricto en TypeScript y las convenciones de código.
-3. Verifica que el proyecto compile sin errores:
+2. Make your changes while maintaining strict TypeScript typing and code style conventions.
+3. Verify that the project builds without errors:
    ```bash
    pnpm run build
    ```
-4. Haz commit de tus cambios con mensajes descriptivos (sugerimos usar [Conventional Commits](https://www.conventionalcommits.org/)):
+4. Commit your changes with descriptive messages (we recommend [Conventional Commits](https://www.conventionalcommits.org/)):
    ```bash
-   git commit -m "feat(footer): mejorar accesibilidad y contraste de enlaces"
+   git commit -m "feat(footer): improve link accessibility and contrast"
    ```
-5. Sube tus cambios a tu fork y abre un **Pull Request** hacia la rama `main` del repositorio principal.
+5. Push your changes to your fork and open a **Pull Request** targeting the `main` branch of the upstream repository.
 
-¡Gracias por hacer de Linux y el software Open Source un ecosistema mejor para todos! 🚀
+Thank you for making Linux and Open Source a better ecosystem for everyone! 🚀

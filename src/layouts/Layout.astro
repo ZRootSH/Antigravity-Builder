@@ -1,20 +1,20 @@
 ---
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = "Antigravity IDE - Repositorio Oficial DNF para Linux",
-  description = "Repositorio oficial DNF y paquetes RPM automatizados de Antigravity IDE para Fedora, Red Hat Enterprise Linux y AlmaLinux."
+const {
+  title = "Antigravity IDE - Official DNF Repository for Linux",
+  description = "Official DNF repository and automated RPM packages of Antigravity IDE for Fedora, Red Hat Enterprise Linux, and AlmaLinux.",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,51 +23,76 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0A0E17" />
-    
+
     <!-- OpenGraph / Social Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ide.tudominio.com/" />
+    <meta property="og:url" content="https://ide.yourdomain.com/" />
   </head>
-  <body class="bg-background text-slate-100 min-h-screen flex flex-col selection:bg-neon-cyan/30 selection:text-neon-cyan">
-    
+  <body
+    class="bg-background text-slate-100 min-h-screen flex flex-col selection:bg-neon-cyan/30 selection:text-neon-cyan"
+  >
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        
+    <header
+      class="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-white/[0.06]"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neon-cyan to-neon-purple p-0.5 shadow-neon-cyan transition-transform group-hover:scale-105">
-            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-mono font-bold text-neon-cyan text-lg">
-              AG
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neon-cyan to-neon-purple p-0.5 shadow-neon-cyan transition-transform group-hover:scale-105"
+          >
+            <div
+              class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-mono font-bold text-neon-cyan text-lg"
+            >
+              <img
+                src="/favicon.svg"
+                alt="Logo Antigravity IDE"
+                class="w-6 h-6"
+              />
             </div>
           </div>
           <div class="flex flex-col">
-            <span class="font-bold tracking-tight text-white text-base">Antigravity <span class="text-gradient-cyan">IDE</span></span>
-            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-mono">Linux RPM Repo</span>
+            <span class="font-bold tracking-tight text-white text-base"
+              >Antigravity <span class="text-gradient-cyan">IDE</span></span
+            >
+            <span
+              class="text-[10px] uppercase tracking-widest text-slate-400 font-mono"
+              >Linux RPM Repo</span
+            >
           </div>
         </a>
 
         <!-- Nav Links -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#instalacion" class="hover:text-neon-cyan transition-colors">Guía de Instalación</a>
-          <a href="#changelog" class="hover:text-neon-cyan transition-colors">Changelog</a>
-          <a href="/repo/" class="hover:text-neon-cyan transition-colors font-mono text-xs bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-            Navegar /repo/ ↗
+        <nav
+          class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300"
+        >
+          <a href="#installation" class="hover:text-neon-cyan transition-colors"
+            >Installation Guide</a
+          >
+          <a href="#changelog" class="hover:text-neon-cyan transition-colors"
+            >Changelog</a
+          >
+          <a
+            href="/repo/"
+            class="hover:text-neon-cyan transition-colors font-mono text-xs bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800"
+          >
+            Browse /repo/ ↗
           </a>
         </nav>
 
         <!-- CTA Button -->
         <div class="flex items-center gap-4">
           <a
-            href="#instalacion"
+            href="#installation"
             class="text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg bg-primary-500/10 text-neon-cyan border border-primary-500/30 hover:bg-primary-500/20 transition-all shadow-sm"
           >
-            Instalar v2.1.1
+            Install v2.1.1
           </a>
         </div>
-
       </div>
     </header>
 
@@ -78,6 +103,5 @@ const {
 
     <!-- Global Footer -->
     <Footer />
-
   </body>
 </html>

@@ -1,33 +1,33 @@
-# Código de Conducta de la Comunidad
+# Community Code of Conduct
 
-## Nuestro Compromiso
+## Our Pledge
 
-En interés de fomentar un ambiente abierto y acogedor, nosotros como contribuyentes y mantenedores nos comprometemos a hacer de la participación en nuestro proyecto y nuestra comunidad una experiencia libre de acoso para todos, independientemente de la edad, dimensión corporal, discapacidad, etnia, identidad y expresión de género, nivel de experiencia, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-## Nuestros Estándares
+## Our Standards
 
-Ejemplos de comportamiento que contribuyen a crear un ambiente positivo incluyen:
-* Uso de lenguaje amable e inclusivo.
-* Respeto a los diferentes puntos de vista y experiencias.
-* Aceptación de críticas constructivas.
-* Enfocarse en lo que es mejor para la comunidad.
-* Mostrar empatía hacia otros miembros de la comunidad.
+Examples of behavior that contributes to creating a positive environment include:
+* Using welcoming and inclusive language.
+* Being respectful of differing viewpoints and experiences.
+* Gracefully accepting constructive criticism.
+* Focusing on what is best for the community.
+* Showing empathy towards other community members.
 
-Ejemplos de comportamiento inaceptable por parte de los participantes incluyen:
-* El uso de lenguaje o imágenes sexualizadas y la atención o avances sexuales no deseados.
-* Comentarios despectivos (*trolling*), insultos personales o políticos, y ataques personales.
-* Acoso público o privado.
-* Publicar información privada de otros, como una dirección física o electrónica, sin permiso explícito.
-* Otra conducta que pueda ser razonablemente considerada inapropiada en un entorno profesional.
+Examples of unacceptable behavior by participants include:
+* The use of sexualized language or imagery and unwelcome sexual attention or advances.
+* Trolling, insulting/derogatory comments, and personal or political attacks.
+* Public or private harassment.
+* Publishing others' private information, such as a physical or electronic address, without explicit permission.
+* Other conduct which could reasonably be considered inappropriate in a professional setting.
 
-## Responsabilidades de los Mantenedores
+## Maintainer Responsibilities
 
-Los mantenedores son responsables de aclarar los estándares de comportamiento aceptable y se espera que tomen medidas correctivas y de represalia apropiadas y justas en respuesta a cualquier caso de conducta inaceptable.
+Maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
-## Alcance
+## Scope
 
-Este Código de Conducta se aplica tanto dentro de los espacios del proyecto como en los espacios públicos cuando un individuo represente al proyecto o a su comunidad.
+This Code of Conduct applies within all project spaces, and it also applies when an individual is representing the project or its community in public spaces.
 
-## Atribución
+## Attribution
 
-Este Código de Conducta es una adaptación de [Contributor Covenant](https://www.contributor-covenant.org/), versión 2.1.
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.

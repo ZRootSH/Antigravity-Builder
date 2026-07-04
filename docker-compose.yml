@@ -33,7 +33,7 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro,z
     networks:
       - dokploy-network
-    # En Dokploy, el dominio, puerto (80) y SSL (Let's Encrypt) se configuran 
+    # En Dokploy, el dominio, puerto (3020) y SSL (Let's Encrypt) se configuran 
     # directamente desde la interfaz web de Dokploy (Pestaña "Domains"), 
     # por lo que evitamos labels hardcodeados de Traefik para prevenir conflictos.
 

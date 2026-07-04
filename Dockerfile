@@ -3,7 +3,7 @@
 # ==============================================================================
 
 # Etapa 1: Construcción del sitio web con Node.js y pnpm
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 
 # Habilitar corepack e instalar pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -31,7 +31,7 @@ COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto 80
-EXPOSE 80
+EXPOSE 3020
 
 # Iniciar Nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]

@@ -1,91 +1,12 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import { Hero } from '../components/Hero.tsx';
 import { InstallGuide } from '../components/InstallGuide.tsx';
 import { Changelog } from '../components/Changelog.tsx';
-import '../styles/global.css';
 ---
 
-<!doctype html>
-<html lang="es" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Antigravity IDE v2.0 - Repositorio Oficial DNF para Linux</title>
-    <meta name="description" content="Repositorio oficial DNF y paquetes RPM automatizados de Antigravity IDE v2.0 para Fedora, Red Hat Enterprise Linux y AlmaLinux. Desarrollado con IA Agentica por Google DeepMind." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0A0E17" />
-    
-    <!-- OpenGraph / Social Meta Tags -->
-    <meta property="og:title" content="Antigravity IDE v2.0 - Repositorio Oficial DNF" />
-    <meta property="og:description" content="Descarga o configura el repositorio DNF oficial para Antigravity IDE en Linux RHEL / Fedora." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ide.tudominio.com/" />
-  </head>
-  <body class="bg-background text-slate-100 min-h-screen flex flex-col selection:bg-neon-cyan/30 selection:text-neon-cyan">
-    
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neon-cyan to-neon-purple p-0.5 shadow-neon-cyan transition-transform group-hover:scale-105">
-            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-mono font-bold text-neon-cyan text-lg">
-              AG
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold tracking-tight text-white text-base">Antigravity <span class="text-gradient-cyan">IDE</span></span>
-            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-mono">Linux RPM Repo</span>
-          </div>
-        </a>
-
-        <!-- Nav Links -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#instalacion" class="hover:text-neon-cyan transition-colors">Guía de Instalación</a>
-          <a href="#changelog" class="hover:text-neon-cyan transition-colors">Changelog</a>
-          <a href="/repo/" class="hover:text-neon-cyan transition-colors font-mono text-xs bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-            Navegar /repo/ ↗
-          </a>
-        </nav>
-
-        <!-- CTA Button -->
-        <div class="flex items-center gap-4">
-          <a
-            href="#instalacion"
-            class="text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg bg-primary-500/10 text-neon-cyan border border-primary-500/30 hover:bg-primary-500/20 transition-all shadow-sm"
-          >
-            Instalar v2.0.0
-          </a>
-        </div>
-
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-1">
-      <Hero client:load />
-      <InstallGuide client:load />
-      <Changelog client:load />
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/80 bg-slate-950/60 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs sm:text-sm text-slate-400">
-        <div class="flex items-center gap-2">
-          <span class="font-semibold text-slate-300">Antigravity IDE v2.0</span>
-          <span>&bull;</span>
-          <span>Desarrollado con IA Agentica por Google DeepMind</span>
-        </div>
-        <div class="flex items-center gap-6 font-mono text-xs">
-          <a href="/repo/" class="hover:text-neon-cyan transition-colors">Repositorio XML</a>
-          <a href="https://antigravity.google.com" target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">Sitio Oficial</a>
-          <span class="text-slate-600">|</span>
-          <span>Dokploy + Traefik Automated</span>
-        </div>
-      </div>
-    </footer>
-
-  </body>
-</html>
+<Layout>
+  <Hero client:load />
+  <InstallGuide client:load />
+  <Changelog client:load />
+</Layout>

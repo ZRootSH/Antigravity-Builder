@@ -1,0 +1,36 @@
+# Dockerfile para el constructor del repositorio RPM basado en Fedora 40 (Ecosistema RHEL/Fedora)
+FROM fedora:40
+
+# Instalar dependencias de compilación, Ruby, FPM, herramientas RPM y createrepo_c
+# Nota: Incluimos redhat-rpm-config y libffi-devel necesarios para compilar extensiones nativas de gemas (fpm/ffi)
+RUN dnf update -y && \
+    dnf install -y \
+        ruby \
+        ruby-devel \
+        gcc \
+        make \
+        rpm-build \
+        redhat-rpm-config \
+        libffi-devel \
+        createrepo_c \
+        curl \
+        wget \
+        tar \
+        gzip \
+        bash \
+        shadow-utils \
+        && dnf clean all
+
+# Instalar FPM (Effing Package Management)
+RUN gem install --no-document fpm
+
+# Copiar script de automatización al contenedor para evitar dependencias de bind-mount en Dokploy
+COPY build-repo.sh /usr/local/bin/build-repo.sh
+RUN chmod +x /usr/local/bin/build-repo.sh
+
+# Directorio de trabajo y salida
+WORKDIR /tmp/build
+VOLUME ["/var/www/repo"]
+
+# Punto de entrada predeterminado
+CMD ["/bin/bash", "/usr/local/bin/build-repo.sh"]

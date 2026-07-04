@@ -1,0 +1,48 @@
+services:
+  # Servicio A: Constructor y administrador del repositorio RPM (RHEL/Fedora + FPM + createrepo_c)
+  repo-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile.repo
+    container_name: antigravity-repo-builder
+    restart: "no" # Se ejecuta bajo demanda o mediante cron/webhook en Dokploy
+    environment:
+      - APP_NAME=antigravity-ide
+      - APP_VERSION=2.2.1
+      - APP_ITERATION=1
+      - TAR_URL=https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/2.1.1-6123990880747520/linux-x64/Antigravity%20IDE.tar.gz
+      - REPO_DIR=/var/www/repo
+    volumes:
+      - rpm-repo:/var/www/repo
+      - ./build-repo.sh:/usr/local/bin/build-repo.sh:ro,z
+    command: ["/bin/bash", "/usr/local/bin/build-repo.sh"]
+    networks:
+      - dokploy-network
+
+  # Servicio B: Servidor Web Nginx (Frontend Astro + Repositorio DNF)
+  web-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: antigravity-web-frontend
+    restart: always
+    volumes:
+      - rpm-repo:/usr/share/nginx/html/repo:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro,z
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.antigravity-web.rule=Host('ide.tudominio.com')"
+      - "traefik.http.routers.antigravity-web.entrypoints=websecure"
+      - "traefik.http.routers.antigravity-web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.antigravity-web.loadbalancer.server.port=80"
+      - "traefik.docker.network=dokploy-network"
+
+volumes:
+  rpm-repo:
+    name: antigravity-rpm-repo
+
+networks:
+  dokploy-network:
+    external: true

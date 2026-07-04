@@ -8,7 +8,7 @@ services:
     restart: "no" # Se ejecuta bajo demanda o mediante cron/webhook en Dokploy
     environment:
       - APP_NAME=antigravity-ide
-      - APP_VERSION=2.2.1
+      - APP_VERSION=2.1.1
       - APP_ITERATION=1
       - TAR_URL=https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/2.1.1-6123990880747520/linux-x64/Antigravity%20IDE.tar.gz
       - REPO_DIR=/var/www/repo
@@ -31,13 +31,9 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro,z
     networks:
       - dokploy-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.antigravity-web.rule=Host('ide.tudominio.com')"
-      - "traefik.http.routers.antigravity-web.entrypoints=websecure"
-      - "traefik.http.routers.antigravity-web.tls.certresolver=letsencrypt"
-      - "traefik.http.services.antigravity-web.loadbalancer.server.port=80"
-      - "traefik.docker.network=dokploy-network"
+    # En Dokploy, el dominio, puerto (80) y SSL (Let's Encrypt) se configuran 
+    # directamente desde la interfaz web de Dokploy (Pestaña "Domains"), 
+    # por lo que evitamos labels hardcodeados de Traefik para prevenir conflictos.
 
 volumes:
   rpm-repo:

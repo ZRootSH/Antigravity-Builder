@@ -8,10 +8,11 @@ set -euo pipefail
 APP_NAME="${APP_NAME:-antigravity-ide}"
 APP_VERSION="${APP_VERSION:-2.1.1}"
 APP_ITERATION="${APP_ITERATION:-1}"
-TAR_URL="${TAR_URL:-https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/2.1.1-6123990880747520/linux-x64/Antigravity%20IDE.tar.gz}"
+TAR_URL="${TAR_URL:-https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/2.1.1-6123990880747520/linux-arm/Antigravity%20IDE.tar.gz}"
 REPO_DIR="${REPO_DIR:-/var/www/repo}"
 BUILD_DIR="/tmp/package-root"
-ARCH="x86_64"
+ARCH="${ARCH:-aarch64}"
+DOMAIN="${DOMAIN:-antigravity.zrootsh.com}"
 
 echo "===================================================================="
 echo " [INFO] Iniciando canalización de empaquetado RPM para ${APP_NAME} v${APP_VERSION}-${APP_ITERATION}"
@@ -24,7 +25,7 @@ mkdir -p "${BUILD_DIR}/opt/${APP_NAME}"
 mkdir -p "${BUILD_DIR}/usr/local/bin"
 mkdir -p "${BUILD_DIR}/usr/share/applications"
 mkdir -p "${BUILD_DIR}/usr/share/pixmaps"
-mkdir -p "${REPO_DIR}/x86_64"
+mkdir -p "${REPO_DIR}/${ARCH}"
 
 # 2. Descargar y extraer el paquete .tar.gz oficial
 echo "--> [2/5] Descargando archivo fuente desde: ${TAR_URL}..."
@@ -84,7 +85,7 @@ chmod 644 "${BUILD_DIR}/usr/share/pixmaps/${APP_NAME}.svg"
 # 4. Empaquetar con FPM para generar el .rpm
 echo "--> [4/5] Ejecutando FPM para empaquetar arquitectura ${ARCH}..."
 RPM_NAME="${APP_NAME}-${APP_VERSION}-${APP_ITERATION}.${ARCH}.rpm"
-RPM_PATH="${REPO_DIR}/x86_64/${RPM_NAME}"
+RPM_PATH="${REPO_DIR}/${ARCH}/${RPM_NAME}"
 
 fpm --verbose -s dir -t rpm \
     -n "${APP_NAME}" \
@@ -92,11 +93,11 @@ fpm --verbose -s dir -t rpm \
     --iteration "${APP_ITERATION}" \
     -a "${ARCH}" \
     -C "${BUILD_DIR}" \
-    --description "Antigravity IDE v2.0 - Advanced Agentic Coding IDE by Google DeepMind" \
-    --url "https://antigravity.google.com" \
+    --description "Antigravity IDE v${APP_VERSION} - Advanced Agentic Coding IDE by Google DeepMind" \
+    --url "https://${DOMAIN}" \
     --vendor "Google DeepMind" \
     --license "Proprietary/Apache-2.0" \
-    --maintainer "DevOps Team <devops@tudominio.com>" \
+    --maintainer "DevOps Team <devops@${DOMAIN}>" \
     --rpm-summary "Entorno de desarrollo impulsado por IA agentica" \
     --category "Development/Tools" \
     --rpm-rpmbuild-define "debug_package %{nil}" \
@@ -120,6 +121,6 @@ chmod -R 755 "${REPO_DIR}"
 echo "===================================================================="
 echo " [DONE] ¡Repositorio DNF actualizado exitosamente!"
 echo " Ubicación del repositorio: ${REPO_DIR}"
-echo " Paquetes disponibles en /repo/x86_64/:"
-ls -lh "${REPO_DIR}/x86_64/"
+echo " Paquetes disponibles en /repo/${ARCH}/:"
+ls -lh "${REPO_DIR}/${ARCH}/"
 echo "===================================================================="

@@ -18,10 +18,10 @@ export const Hero: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/80 border border-primary-500/30 backdrop-blur-md shadow-sm">
               <span className="flex h-2 w-2 rounded-full bg-neon-cyan animate-pulse" />
               <span className="text-xs font-semibold tracking-wide uppercase text-primary-300">
-                Antigravity IDE v2.0.0 Oficial
+                Antigravity IDE v{import.meta.env.PUBLIC_VERSION || "2.1.1"} Oficial
               </span>
               <span className="text-xs text-slate-400 border-l border-slate-700 pl-2">
-                Linux RHEL / Fedora
+                Linux RHEL / Fedora ({import.meta.env.PUBLIC_ARCH || "aarch64"})
               </span>
             </div>
 
@@ -55,11 +55,11 @@ export const Hero: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
               <a
-                href="/repo/x86_64/antigravity-ide-2.0.0-1.x86_64.rpm"
+                href={`/repo/${import.meta.env.PUBLIC_ARCH || "aarch64"}/antigravity-ide-${import.meta.env.PUBLIC_VERSION || "2.1.1"}-1.${import.meta.env.PUBLIC_ARCH || "aarch64"}.rpm`}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold text-slate-900 bg-gradient-to-r from-neon-cyan to-primary-400 hover:from-primary-300 hover:to-neon-cyan shadow-neon-cyan transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <Download className="w-5 h-5" />
-                <span>Descargar .RPM x86_64</span>
+                <span>Descargar .RPM {import.meta.env.PUBLIC_ARCH || "aarch64"}</span>
               </a>
               
               <a
@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
                       Paquete &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arquitectura &nbsp;&nbsp;Versión &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repositorio<br />
                       =================================================================<br />
                       Instalando:<br />
-                      <span className="text-neon-cyan font-semibold">antigravity-ide</span> &nbsp;&nbsp;x86_64 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.0.0-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antigravity-repo
+                      <span className="text-neon-cyan font-semibold">antigravity-ide</span> &nbsp;&nbsp;{import.meta.env.PUBLIC_ARCH || "aarch64"} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{import.meta.env.PUBLIC_VERSION || "2.1.1"}-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antigravity-repo
                     </p>
                   </div>
 

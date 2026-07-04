@@ -20,9 +20,13 @@ export const InstallGuide: React.FC = () => {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
+  const domain = import.meta.env.PUBLIC_DOMAIN || "antigravity.zrootsh.com";
+  const version = import.meta.env.PUBLIC_VERSION || "2.1.1";
+  const arch = import.meta.env.PUBLIC_ARCH || "aarch64";
+
   const repoConfig = `[antigravity]
 name=Antigravity IDE Official Repository
-baseurl=https://ide.tudominio.com/repo/x86_64/
+baseurl=https://${domain}/repo/${arch}/
 enabled=1
 gpgcheck=0
 metadata_expire=300`;
@@ -30,8 +34,8 @@ metadata_expire=300`;
   const dnfInstallCmd = `sudo dnf check-update
 sudo dnf install antigravity-ide -y`;
 
-  const manualInstallCmd = `wget https://ide.tudominio.com/repo/x86_64/antigravity-ide-2.0.0-1.x86_64.rpm
-sudo dnf localinstall ./antigravity-ide-2.0.0-1.x86_64.rpm -y`;
+  const manualInstallCmd = `wget https://${domain}/repo/${arch}/antigravity-ide-${version}-1.${arch}.rpm
+sudo dnf localinstall ./antigravity-ide-${version}-1.${arch}.rpm -y`;
 
   return (
     <section id="installation" className="py-24 bg-surface/30 relative">

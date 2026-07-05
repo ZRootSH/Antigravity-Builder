@@ -54,7 +54,7 @@ echo "--> [3/5] Creando script wrapper en /usr/local/bin/${APP_NAME}..."
 cat << EOF > "${BUILD_DIR}/usr/local/bin/${APP_NAME}"
 #!/usr/bin/env bash
 # Wrapper oficial para Antigravity IDE en sistemas Linux / RHEL / Fedora
-exec /opt/${APP_NAME}/antigravity-ide --no-sandbox "\$@"
+/opt/${APP_NAME}/antigravity-ide --no-sandbox "\$@" > /dev/null 2>&1 &
 EOF
 chmod 755 "${BUILD_DIR}/usr/local/bin/${APP_NAME}"
 
@@ -82,6 +82,15 @@ cat << 'EOF' > "${BUILD_DIR}/usr/share/pixmaps/${APP_NAME}.svg"
 EOF
 chmod 644 "${BUILD_DIR}/usr/share/pixmaps/${APP_NAME}.svg"
 
+# Crear script de post-instalación para mitigar errores MIME
+cat << 'EOF' > "/tmp/post-install.sh"
+#!/usr/bin/env bash
+if command -v update-mime-database >/dev/null 2>&1; then
+    update-mime-database /usr/share/mime || true
+fi
+EOF
+chmod 755 "/tmp/post-install.sh"
+
 # 4. Empaquetar con FPM para generar el .rpm
 echo "--> [4/5] Ejecutando FPM para empaquetar arquitectura ${ARCH}..."
 RPM_NAME="${APP_NAME}-${APP_VERSION}-${APP_ITERATION}.${ARCH}.rpm"
@@ -93,6 +102,7 @@ fpm --verbose -s dir -t rpm \
     --iteration "${APP_ITERATION}" \
     -a "${ARCH}" \
     -C "${BUILD_DIR}" \
+    --after-install /tmp/post-install.sh \
     --description "Antigravity IDE v${APP_VERSION} - Advanced Agentic Coding IDE by Google DeepMind" \
     --url "https://${DOMAIN}" \
     --vendor "Google DeepMind" \

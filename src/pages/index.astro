@@ -2,11 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import { Hero } from "../components/Hero";
 import { InstallGuide } from "../components/InstallGuide";
-import { Changelog } from "../components/Changelog";
 ---
 
 <Layout>
   <Hero client:load />
   <InstallGuide client:load />
-  <Changelog client:load />
 </Layout>

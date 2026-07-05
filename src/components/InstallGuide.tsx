@@ -22,7 +22,7 @@ export const InstallGuide: React.FC = () => {
 
   const domain = import.meta.env.PUBLIC_DOMAIN || "antigravity.zrootsh.com";
   const version = import.meta.env.PUBLIC_VERSION || "2.1.1";
-  const arch = import.meta.env.PUBLIC_ARCH || "aarch64";
+  const arch = import.meta.env.PUBLIC_ARCH || "x86_64";
 
   const repoConfig = `[antigravity]
 name=Antigravity IDE Official Repository
